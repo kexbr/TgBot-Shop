@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-struct Item{
+class Item{
     private:
         int id;
         double cost;
@@ -16,6 +16,19 @@ struct Item{
         void changeCost(double newCost);
         void changeFileLocations(vector<string> newFileLocations);
         int getId();
+        string getName();
+        double getCost();
         string getDesctiption();
         vector<string> getFileLocations();
+};
+class listOfItems{
+    private:
+        vector<Item> items; 
+        int length;
+    public:
+        ~listOfItems();
+        listOfItems();
+        Item* findById(int id);
+        vector<Item*> findByName(string name);
+        Item* operator [] (int i);
 };
