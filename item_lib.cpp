@@ -3,7 +3,7 @@
 using namespace std;
 mt19937 rnd(time(NULL));
 Item::Item(){
-    id = rnd();
+    id = -1;
     cost = 0.0;
     name = "Item";
     description = "default";
@@ -71,6 +71,9 @@ vector<string> Item::getFileLocations(){
 listOfItems::listOfItems(){
     length = 0;
 }
+listOfItems::~listOfItems(){
+    
+}
 Item* listOfItems::findById(int id){
     if(itemById.find(id) == itemById.end()){
         return nullptr;
@@ -108,4 +111,15 @@ void listOfItems::addItem(Item newItem){
     items.push_back(newItem);
     itemById[newItem.getId()] = &items.back();
     usedId[newItem.getId()] = 1;
+}
+
+void listOfItems::compressItems(){
+    vector<Item> newItems;
+    for(int i = 0; i < length; i++){
+        if(items[i].getId() != -1){
+            newItems.push_back(items[i]);
+            items[i].getId();
+        }
+    }
+    items = newItems;
 }

@@ -41,4 +41,5 @@ class listOfItems{
         void eraseItem(int id);
         void addItem(Item newItem);
         int size();
+        void compressItems();
 };
